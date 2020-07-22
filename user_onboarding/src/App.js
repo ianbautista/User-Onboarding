@@ -1,27 +1,25 @@
-import React from "react";
-import logo from "./logo.svg";
+import React, { useState, useEffect } from "react";
 import "./App.css";
-import From from "./Form";
+import Form from "./Form";
+import User from "./user";
+import { v4 as uuid } from "uuid";
 
-function App() {
-	return (
-		<div className="App">
-			<header className="App-header">
-				<img src={logo} className="App-logo" alt="logo" />
-				<p>
-					Edit <code>src/App.js</code> and save to reload.
-				</p>
-				<a
-					className="App-link"
-					href="https://reactjs.org"
-					target="_blank"
-					rel="noopener noreferrer"
-				>
-					Learn React
-				</a>
-			</header>
-		</div>
-	);
-}
+const initialUserValues = {
+	id: uuid(),
+	name: "",
+	email: "",
+	password: "",
+	"terms of service": "",
+};
 
+const initialUserList = [
+	{
+		name: "Christian Bautista",
+		email: "christian@lambda.com",
+		password: "lambda12345",
+		"terms of service": true,
+	},
+];
+
+function App() {}
 export default App;
