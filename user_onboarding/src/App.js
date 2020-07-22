@@ -21,5 +21,10 @@ const initialUserList = [
 	},
 ];
 
-function App() {}
+function App() {
+	const [users, setUsers] = useState(initialFriends);
+	const [formValues, setFormValues] = useState(initialFormValues);
+	const [formErrors, setFormErrors] = useState(initialFormErrors);
+	const [disabled, setDisabled] = useState(initialDisabled);
+}
 export default App;
