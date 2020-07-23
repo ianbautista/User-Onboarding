@@ -7,7 +7,7 @@ export default function User(props) {
 	}
 
 	return (
-		<div>
+		<div className="userCard">
 			<img alt="" src={details.avatar} />
 			<h2>
 				<span>{details.first_name}</span> {""}

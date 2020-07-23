@@ -133,23 +133,27 @@ function App() {
 	}, []);
 
 	return (
-		<div className="container">
-			<header>
-				<h1>User Onboarding</h1>
+		<div className="container App">
+			<header className="App-header">
+				<div className="segment">
+					<h1>User Onboarding</h1>
+				</div>
+				<div className="formContainer">
+					<Form
+						formValues={formValues}
+						inputChange={inputChange}
+						checkboxChange={checkboxChange}
+						submit={submit}
+						disabled={disabled}
+						formErrors={formErrors}
+					/>
+				</div>
 			</header>
-
-			<Form
-				formValues={formValues}
-				inputChange={inputChange}
-				checkboxChange={checkboxChange}
-				submit={submit}
-				disabled={disabled}
-				formErrors={formErrors}
-			/>
-
-			{users.map((user) => {
-				return <User key={user.id} details={user} />;
-			})}
+			<section className="cardContainer">
+				{users.map((user) => {
+					return <User key={user.id} details={user} />;
+				})}
+			</section>
 		</div>
 	);
 }

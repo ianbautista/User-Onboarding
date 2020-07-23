@@ -20,7 +20,7 @@ export default function Form(props) {
 	return (
 		<form onSubmit={onSubmit}>
 			<label htmlFor="first_name">
-				First Name:&nbsp;&nbsp;
+				First Name&nbsp;&nbsp;
 				<input
 					id="first_nameInput"
 					name="first_name"
@@ -33,7 +33,7 @@ export default function Form(props) {
 			</label>
 			<br />
 			<label htmlFor="last_name">
-				Last Name:&nbsp;&nbsp;
+				Last Name&nbsp;&nbsp;
 				<input
 					id="last_nameInput"
 					name="last_name"
@@ -46,7 +46,7 @@ export default function Form(props) {
 			</label>
 			<br />
 			<label htmlFor="email">
-				Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Email&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input
 					id="emailInput"
 					name="email"
@@ -59,7 +59,7 @@ export default function Form(props) {
 			</label>
 			<br />
 			<label htmlFor="password">
-				Password:&nbsp;&nbsp;&nbsp;&nbsp;
+				Password&nbsp;&nbsp;&nbsp;&nbsp;
 				<input
 					id="passwordInput"
 					name="password"
@@ -73,7 +73,7 @@ export default function Form(props) {
 			<br />
 			<label htmlFor="role">
 				Role: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-				<select onChange={onInputChange} value={formValues.role} name="role">
+				<select className="role" onChange={onInputChange} value={formValues.role} name="role">
 					<option value="" selected disabled>
 						- Select an option -
 					</option>
@@ -95,6 +95,7 @@ export default function Form(props) {
 			<label htmlFor="termsOfService">
 				Accept Terms of Service:&nbsp;&nbsp;
 				<input
+					className="checkBox"
 					id="termsOfServiceInput"
 					name="termsOfService"
 					type="checkbox"
@@ -103,7 +104,9 @@ export default function Form(props) {
 				/>
 			</label>
 			<br />
-			<button disabled={disabled}>submit</button>
+			<button className="red" disabled={disabled}>
+				submit
+			</button>
 			<div className="errors">
 				<div>{formErrors.username}</div>
 				<div>{formErrors.email}</div>
