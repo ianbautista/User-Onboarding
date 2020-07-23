@@ -5,6 +5,7 @@ import User from "./User";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
 import formSchema from "./formSchema";
+import * as yup from "yup";
 
 const initialUserValues = {
 	id: uuid(),
@@ -59,11 +60,57 @@ function App() {
 			});
 	};
 
+	const inputChange = (name, value) => {
+		yup
+			.reach(formSchema, name)
+			.validate(value)
+			.then(() => {
+				setFormErrors({
+					...formErrors,
+					[name]: "",
+				});
+			})
+			.catch((error) => {
+				setFormErrors({
+					...formErrors,
+					[name]: error.errors[0],
+				});
+			});
+		setFormValues({
+			...formValues,
+			[name]: value,
+		});
+	};
+
+	const checkboxChange = (name, isChecked) => {
+		setFormValues({
+			...formValues,
+			hobbies: {
+				...formValues.hobbies,
+				[name]: isChecked,
+			},
+		});
+	};
+
+	const submit = () => {
+		const newUser = {
+			name: formValues.name.trim(),
+			email: formValues.email.trim(),
+			password: formValues.password.trim(),
+			termsOfService: formValues.termsOfService,
+		};
+		postNewUser(newUser);
+	};
+
 	useEffect(() => {
 		formSchema.isValid(formValues).then((valid) => {
 			setDisabled(!valid);
 		});
 	}, [formValues]);
+
+	useEffect(() => {
+		getUsers();
+	}, []);
 
 	return (
 		<div className="container">
@@ -71,7 +118,14 @@ function App() {
 				<h1>User Onboarding</h1>
 			</header>
 
-			<Form />
+			<Form
+				formValues={formValues}
+				inputChange={inputChange}
+				checkboxChange={checkboxChange}
+				submit={submit}
+				disabled={disabled}
+				formErrors={formErrors}
+			/>
 		</div>
 	);
 }
