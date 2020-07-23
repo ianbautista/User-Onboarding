@@ -1,0 +1,35 @@
+describe("Inputs and submit button", () => {
+	it("can navigate to the site", () => {
+		// this is setup for the actual test
+		cy.visit("http://localhost:3001");
+		// assert that the site we landed at is the correct one
+		cy.url().should("include", "localhost");
+	});
+});
+
+describe("MVP Testing", () => {
+	it("Gets the `Name` input and type a name in it", () => {
+		cy.get('input[name="first_name"]').type("Christian").should("have.value", "Christian");
+	});
+	it("Gets the `Name` input and type a name in it", () => {
+		cy.get('input[name="last_name"]').type("Bautista").should("have.value", "Bautista");
+	});
+	it("Get the `Email` input and type an email address in it", () => {
+		cy.get('input[name="email"]').type("christian@lambda.com");
+	});
+
+	it("Get the `password` input and type a password in it", () => {
+		cy.get('input[name="password"]').type("Christian").should("have.value", "Christian");
+	});
+
+	it("Check to see if a user can check the terms of service box", () => {
+		cy.get('input[name="termsOfService"]').check();
+	});
+
+	it("Check to see if a user can submit the form data", () => {
+		cy.get("button.red").should("not.be.disabled");
+	});
+	it("Check for form validation if an input is left empty", () => {
+		cy.get("button.red").click();
+	});
+});
