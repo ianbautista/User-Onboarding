@@ -1,8 +1,6 @@
-describe("Inputs and submit button", () => {
+describe("Initialize test", () => {
 	it("can navigate to the site", () => {
-		// this is setup for the actual test
 		cy.visit("http://localhost:3001");
-		// assert that the site we landed at is the correct one
 		cy.url().should("include", "localhost");
 	});
 });
