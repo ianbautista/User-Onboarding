@@ -58,18 +58,24 @@ export default function Form(props) {
 				/>
 			</label>
 			<br />
-			<label htmlFor="tof">
+			<label htmlFor="ttermsOfService">
 				Accept Terms of Service:&nbsp;&nbsp;
 				<input
-					id="tofInput"
-					name="tof"
+					id="termsOfServiceInput"
+					name="termsOfService"
 					type="checkbox"
-					// onChange={onInputChange}
-					// checked={formValues.termOfService}
+					onChange={onCheckboxChange}
+					checked={formValues.termOfService}
 				/>
 			</label>
 			<br />
 			<button disabled={disabled}>submit</button>
+			<div className="errors">
+				<div>{formErrors.username}</div>
+				<div>{formErrors.email}</div>
+				<div>{formErrors.role}</div>
+				<div>{formErrors.civil}</div>
+			</div>
 		</form>
 	);
 }

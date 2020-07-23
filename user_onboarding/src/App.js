@@ -38,11 +38,12 @@ function App() {
 			.get("https://reqres.in/api/users")
 			.then((response) => {
 				console.log(response);
-				setUsers(response.data);
+				setUsers(response.data.data);
 			})
 			.catch((error) => {
 				debugger;
 				console.log(error);
+				alert(`Oops! We have a problem my friend. ${error}`);
 			});
 	};
 
@@ -57,6 +58,7 @@ function App() {
 			.catch((error) => {
 				debugger;
 				console.log(error);
+				alert(`Oops! We have a problem my friend. ${error}`);
 			});
 	};
 
@@ -83,12 +85,24 @@ function App() {
 	};
 
 	const checkboxChange = (name, isChecked) => {
+		yup
+			.reach(formSchema, name)
+			.validate(isChecked)
+			.then(() => {
+				setFormErrors({
+					...formErrors,
+					[name]: "",
+				});
+			})
+			.catch((error) => {
+				setFormErrors({
+					...formErrors,
+					[name]: error.errors[0],
+				});
+			});
 		setFormValues({
 			...formValues,
-			hobbies: {
-				...formValues.hobbies,
-				[name]: isChecked,
-			},
+			[name]: isChecked,
 		});
 	};
 
@@ -126,6 +140,10 @@ function App() {
 				disabled={disabled}
 				formErrors={formErrors}
 			/>
+
+			{users.map((user) => {
+				return <User key={user.id} details={user} />;
+			})}
 		</div>
 	);
 }
