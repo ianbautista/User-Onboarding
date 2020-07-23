@@ -22,6 +22,20 @@ describe("MVP Testing", () => {
 		cy.get('input[name="password"]').type("Christian").should("have.value", "Christian");
 	});
 
+	it("STRETCH Can select role", () => {
+		cy.get("select.role")
+			.select("Designer")
+			.should("have.value", "Designer")
+			.select("Junior Front-End")
+			.should("have.value", "Junior Front-End")
+			.select("Senior Front-End")
+			.should("have.value", "Senior Front-End")
+			.select("Back-End Engineer")
+			.should("have.value", "Back-End Engineer")
+			.select("Project Manager")
+			.should("have.value", "Project Manager");
+	});
+
 	it("Check to see if a user can check the terms of service box", () => {
 		cy.get('input[name="termsOfService"]').check();
 	});
