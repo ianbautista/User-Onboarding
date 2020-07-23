@@ -4,6 +4,7 @@ import Form from "./Form";
 import User from "./User";
 import { v4 as uuid } from "uuid";
 import axios from "axios";
+import formSchema from "./formSchema";
 
 const initialUserValues = {
 	id: uuid(),
@@ -12,7 +13,7 @@ const initialUserValues = {
 	password: "",
 	termsOfService: false,
 };
-console.log(uuid());
+
 const initialFormErrors = [
 	{
 		id: null,
@@ -35,6 +36,7 @@ function App() {
 		axios
 			.get("https://reqres.in/api/users")
 			.then((response) => {
+				console.log(response);
 				setUsers(response.data);
 			})
 			.catch((error) => {
@@ -47,6 +49,7 @@ function App() {
 		axios
 			.post("https://reqres.in/api/users", newUser)
 			.then((response) => {
+				console.log(response);
 				setUsers([response.data, ...users]);
 				setFormValues(initialUserValues);
 			})
@@ -55,6 +58,12 @@ function App() {
 				console.log(error);
 			});
 	};
+
+	useEffect(() => {
+		formSchema.isValid(formValues).then((valid) => {
+			setDisabled(!valid);
+		});
+	}, [formValues]);
 
 	return (
 		<div className="container">

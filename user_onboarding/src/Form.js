@@ -9,7 +9,7 @@ export default function Form() {
 					id="nameInput"
 					name="name"
 					type="text"
-					placeholder="Enter name here"
+					placeholder="Enter your name here"
 					maxLength="40"
 				/>
 			</label>
@@ -31,7 +31,7 @@ export default function Form() {
 					id="passwordInput"
 					name="password"
 					type="password"
-					placeholder="must be longer than 6 characters"
+					placeholder="min. of 6 characters"
 					maxLength="20"
 				/>
 			</label>
