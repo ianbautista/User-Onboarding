@@ -8,7 +8,12 @@ export default function User(props) {
 
 	return (
 		<div>
-			<h2>{details.name}</h2>
+			<img alt="" src={details.avatar} />
+			<h2>
+				<span>{details.first_name}</span> {""}
+				<span>{details.last_name}</span>
+			</h2>
+			<h3>{details.role}</h3>
 			<p>Email: {details.email}</p>
 		</div>
 	);

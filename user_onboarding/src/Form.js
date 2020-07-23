@@ -19,21 +19,34 @@ export default function Form(props) {
 
 	return (
 		<form onSubmit={onSubmit}>
-			<label htmlFor="name">
-				Name:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<label htmlFor="first_name">
+				First Name:&nbsp;&nbsp;
 				<input
-					id="nameInput"
-					name="name"
+					id="first_nameInput"
+					name="first_name"
 					type="text"
-					placeholder="Enter your name here"
+					placeholder="Your first name here"
 					maxLength="40"
 					onChange={onInputChange}
-					value={formValues.name}
+					value={formValues.first_name}
+				/>
+			</label>
+			<br />
+			<label htmlFor="last_name">
+				Last Name:&nbsp;&nbsp;
+				<input
+					id="last_nameInput"
+					name="last_name"
+					type="text"
+					placeholder="Your last name here"
+					maxLength="40"
+					onChange={onInputChange}
+					value={formValues.last_name}
 				/>
 			</label>
 			<br />
 			<label htmlFor="email">
-				Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				Email:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 				<input
 					id="emailInput"
 					name="email"
@@ -46,7 +59,7 @@ export default function Form(props) {
 			</label>
 			<br />
 			<label htmlFor="password">
-				Password:&nbsp;&nbsp;
+				Password:&nbsp;&nbsp;&nbsp;&nbsp;
 				<input
 					id="passwordInput"
 					name="password"
@@ -58,7 +71,28 @@ export default function Form(props) {
 				/>
 			</label>
 			<br />
-			<label htmlFor="ttermsOfService">
+			<label htmlFor="role">
+				Role: &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<select onChange={onInputChange} value={formValues.role} name="role">
+					<option value="" selected disabled>
+						- Select an option -
+					</option>
+					<option value="Designer">Designer</option>
+					<option value="Junior Front-End">Junior Front-End</option>
+					<option value="Senior Front-End">Senior Front-End</option>
+					<option value="Back-End Engineer">Back-End Engineer</option>
+					<option value="Project Manager">Project Manager</option>
+				</select>
+			</label>
+			{/* <br />
+			<label htmlFor="avatar">
+				Upload Avatar:
+				<br />
+				<input id="avatar" name="avatar" type="file" onChange={fileSelect} />
+				<button onClick={onFileUpload}>upload</button>
+			</label> */}
+			<br />
+			<label htmlFor="termsOfService">
 				Accept Terms of Service:&nbsp;&nbsp;
 				<input
 					id="termsOfServiceInput"

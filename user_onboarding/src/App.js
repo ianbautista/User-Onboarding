@@ -9,18 +9,22 @@ import * as yup from "yup";
 
 const initialUserValues = {
 	id: uuid(),
-	name: "",
+	first_name: "",
+	last_name: "",
 	email: "",
 	password: "",
+	role: "",
 	termsOfService: false,
 };
 
 const initialFormErrors = [
 	{
 		id: null,
-		name: "",
+		first_name: "",
+		last_name: "",
 		email: "",
 		password: "",
+		role: "",
 	},
 ];
 
@@ -108,9 +112,11 @@ function App() {
 
 	const submit = () => {
 		const newUser = {
-			name: formValues.name.trim(),
+			first_name: formValues.first_name.trim(),
+			last_name: formValues.last_name.trim(),
 			email: formValues.email.trim(),
 			password: formValues.password.trim(),
+			role: formValues.role,
 			termsOfService: formValues.termsOfService,
 		};
 		postNewUser(newUser);
